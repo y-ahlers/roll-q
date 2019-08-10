@@ -1,33 +1,61 @@
-.App {
+body {
+  background: url('http://www.lol-wallpapers.com/wp-content/uploads/2016/12/Bilgewater-Approach.jpg') no-repeat  center fixed;
+  background-size: cover;
+  height: unset !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+ .champ:hover {
+  box-shadow: 0px 0px 5px black !important;
+}
+
+.forbid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.controls {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+  color: antiquewhite;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+
+.controls > * {
+  margin: 0 15px;
+}
+
+.revealed-champ {
+  outline: none;
+  border-radius: 10px;
+  border-color: #FFD700;
+  box-shadow: 0 0 20px  #FFD700;
+  animation: fadein 2s;
+}
+
+.revealed-champ-name {
+  font-size: 60px;
+  margin: 10px 0 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 10em;
+  animation: type 2s steps(60, end);
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
+@keyframes type{ 
+  from { width: 0; } 
+} 
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

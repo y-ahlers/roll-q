@@ -2,12 +2,24 @@
   "name": "roll-q",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://y-ahlers.github.io/roll-q",
   "dependencies": {
+    "gh-pages": "^2.1.1",
+    "local-storage": "^2.0.0",
+    "lodash.debounce": "^4.0.8",
+    "mobx": "^5.13.0",
+    "mobx-react-lite": "^1.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-github-corner": "^2.3.0",
+    "react-scripts": "3.0.1",
+    "react-stack-grid": "^0.7.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
