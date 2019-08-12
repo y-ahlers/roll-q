@@ -20,7 +20,7 @@ import GithubCorner from "react-github-corner";
 
 const PATCH_VERSION = "9.14.1";
 
-const CHAMP_URL = `http://ddragon.leagueoflegends.com/cdn/${PATCH_VERSION}/img/champion/`;
+const CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${PATCH_VERSION}/img/champion/`;
 
 const champs = Object.keys(champsJson.data).map(k => ({
   id: champsJson.data[k].key,
