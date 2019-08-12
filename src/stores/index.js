@@ -5,20 +5,31 @@ import { useLocalStore } from "mobx-react-lite";
 const createStore = () => {
   return {
     bans: ls.get("bans") || [],
+    preset: "My Bans",
     toggleBan(id) {
+      let newBans;
+
       if (this.bans.includes(id)) {
-        const newBans = this.bans.filter(item => item !== id);
-        ls.set("bans", newBans);
-        this.bans = newBans;
+        newBans = this.bans.filter(item => item !== id);
       } else {
-        const newBans = [...this.bans, id];
-        ls.set("bans", newBans);
-        this.bans = newBans;
+        newBans = [...this.bans, id];
       }
+
+      if (this.preset === "My Bans") {
+        ls.set("bans", newBans);
+      }
+
+      this.bans = newBans;
     },
     resetBans() {
       ls.set("bans", []);
       this.bans = [];
+    },
+    setBans(bans) {
+      this.bans = bans;
+    },
+    setPreset(preset) {
+      this.preset = preset;
     }
   };
 };

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import champsJson from "../data/champs_9.14.1";
+import presets from "../data/presets";
 import {
   Header,
   Button,
@@ -8,7 +9,8 @@ import {
   Input,
   Checkbox,
   Popup,
-  Segment
+  Segment,
+  Dropdown
 } from "semantic-ui-react";
 import ls from "local-storage";
 import debounce from "lodash.debounce";
@@ -28,6 +30,15 @@ const champs = Object.keys(champsJson.data).map(k => ({
   image: CHAMP_URL + champsJson.data[k].image.full
 }));
 
+const presetOptions = [
+  { key: "My Bans", text: "My Bans", value: "My Bans" },
+  ...Object.keys(presets).map(k => ({
+    key: k,
+    text: k,
+    value: k
+  }))
+];
+
 export default function() {
   const [chosenChamp, setChosenChamp] = useState({});
   const [bansVisible, setBansVisible] = useState(true);
@@ -41,14 +52,26 @@ export default function() {
     setTextFilter("");
     searchInput.current.inputRef.current.value = "";
   };
+
   const filterByText = debounce(text => setTextFilter(text), 300);
+  const handlePresetChange = (e, { value }) => {
+    store.setPreset(value);
+    const newBans = value === "My Bans" ? ls.get("bans") : presets[value];
+    store.setBans(newBans);
+  };
 
   const findChamp = () => {
-    const bans = ls.get("bans") || [];
-    const rand = Math.floor(Math.random() * (champs.length - bans.length));
-    const champ = champs
-      .filter(i => !bans.includes(i.id))
+    const rand = Math.floor(
+      Math.random() * (champs.length - store.bans.length)
+    );
+    let champ = champs
+      .filter(i => !store.bans.includes(i.id))
       .find((_, index) => index === rand);
+
+    if (!champ) {
+      champ = champs.find(c => c.id === "17");
+    }
+
     setChosenChamp(champ);
   };
 
@@ -81,7 +104,7 @@ export default function() {
           name={chosenChamp.name}
         />
         <Popup
-          content="Click champs to ban or unban"
+          content="Click champs to ban or unban. If you ban everthing you'll play Teemo, I warned you!"
           trigger={<Icon name="info" circular inverted color="grey" />}
         />
       </Container>
@@ -101,6 +124,13 @@ export default function() {
           }
           onChange={e => filterByText(e.target.value)}
         />
+        <Dropdown
+          selection
+          placeholder="Presets"
+          onChange={handlePresetChange}
+          options={presetOptions}
+          value={store.preset}
+        />
         <div style={{ display: "flex", flexDirection: "row" }}>
           <Checkbox
             toggle
@@ -117,6 +147,7 @@ export default function() {
               onClick={() => {
                 store.resetBans();
               }}
+              disabled={store.preset !== "My Bans"}
             />
           }
         />
