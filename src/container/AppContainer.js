@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import champsJson from "../data/champs_9.14.1";
 import {
   Header,
@@ -35,6 +35,12 @@ export default function() {
 
   const store = useStore();
 
+  const searchInput = useRef(null);
+
+  const resetSearch = () => {
+    setTextFilter("");
+    searchInput.current.inputRef.current.value = "";
+  };
   const filterByText = debounce(text => setTextFilter(text), 300);
 
   const findChamp = () => {
@@ -81,6 +87,7 @@ export default function() {
       </Container>
       <Container className="controls" fluid>
         <Input
+          ref={searchInput}
           placeholder="Search..."
           icon={
             <Icon
@@ -89,9 +96,7 @@ export default function() {
               inverted
               circular
               link
-              onClick={() => {
-                setTextFilter("");
-              }}
+              onClick={resetSearch}
             />
           }
           onChange={e => filterByText(e.target.value)}
@@ -106,7 +111,14 @@ export default function() {
         </div>
         <Popup
           content="Reset all bans"
-          trigger={<Button icon="refresh" onClick={() => store.resetBans()} />}
+          trigger={
+            <Button
+              icon="refresh"
+              onClick={() => {
+                store.resetBans();
+              }}
+            />
+          }
         />
       </Container>
       <Grid champs={champs} showBans={bansVisible} filterText={textFilter} />
