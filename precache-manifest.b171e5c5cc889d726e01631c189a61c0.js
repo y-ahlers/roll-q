@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c74b2f0255adeed02dcfa853ca98d8b7",
+    "revision": "ac457cc1250a6b5ca920c93d7d5f2c98",
     "url": "/roll-q/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/roll-q/static/css/2.225efee2.chunk.css"
   },
   {
-    "revision": "328901d3654d6ebdf542",
+    "revision": "de10af682b93130032a4",
     "url": "/roll-q/static/css/main.b117f0c3.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/roll-q/static/js/2.b9c8a489.chunk.js"
   },
   {
-    "revision": "328901d3654d6ebdf542",
-    "url": "/roll-q/static/js/main.3dedb078.chunk.js"
+    "revision": "de10af682b93130032a4",
+    "url": "/roll-q/static/js/main.204b94aa.chunk.js"
   },
   {
     "revision": "a5c48a50ab2f6c7791c9",
