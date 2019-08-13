@@ -54,9 +54,10 @@ export default function() {
   };
 
   const filterByText = debounce(text => setTextFilter(text), 300);
+
   const handlePresetChange = (e, { value }) => {
     store.setPreset(value);
-    const newBans = value === "My Bans" ? ls.get("bans") : presets[value];
+    const newBans = value === "My Bans" ? ls.get("bans") || [] : presets[value];
     store.setBans(newBans);
   };
 
