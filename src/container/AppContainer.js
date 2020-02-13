@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import champsJson from "../data/champs_9.14.1";
+import champsJson from "../data/champs_10.3.1";
 import presets from "../data/presets";
 import {
   Header,
@@ -20,7 +20,7 @@ import { useObserver } from "mobx-react-lite";
 import { useStore } from "../stores";
 import GithubCorner from "react-github-corner";
 
-const PATCH_VERSION = "9.14.1";
+const PATCH_VERSION = "10.3.1";
 
 const CHAMP_URL = `https://ddragon.leagueoflegends.com/cdn/${PATCH_VERSION}/img/champion/`;
 
@@ -158,8 +158,8 @@ export default function() {
         <Segment inverted>
           This is a fan project, all champion images belong to Riot Games |
           Background wallpaper by{" "}
-          <a href="http://www.lol-wallpapers.com/wp-content/uploads/2016/12/Bilgewater-Approach.jpg">
-            lol-wallpapers.com
+          <a href="'http://lolwp.com/wp-content/uploads/2012/02/Captain-Fortune-wallpaper.jpg">
+            lolwp.com
           </a>
         </Segment>
       </Container>
