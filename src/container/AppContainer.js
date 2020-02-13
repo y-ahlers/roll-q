@@ -156,11 +156,8 @@ export default function() {
       <Grid champs={champs} showBans={bansVisible} filterText={textFilter} />
       <Container textAlign="center" style={{ margin: "20px 0 0 0" }}>
         <Segment inverted>
-          This is a fan project, all champion images belong to Riot Games |
-          Background wallpaper by{" "}
-          <a href="'http://lolwp.com/wp-content/uploads/2012/02/Captain-Fortune-wallpaper.jpg">
-            lolwp.com
-          </a>
+          This is a fan project, all champion images and splash arts belong to
+          Riot Games
         </Segment>
       </Container>
       <GithubCorner href="https://github.com/y-ahlers/roll-q" size={60} />
